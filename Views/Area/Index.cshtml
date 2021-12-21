@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MaintenanceWebsite.Models.AreaViewModel>
+
+@{
+    ViewData["Title"] = "Area List";
+}
+
+<h1>Area List</h1>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Create New Area</a>
+</p>
+<div>
+    <a asp-action="Main" asp-controller="Dashboards" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+                    @if (item.Equipments.Count() == 0)
+                    {
+                        @Html.ActionLink("Delete", "Delete", new { id = item.Id }, htmlAttributes: new { @class = "btn btn-danger" });
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

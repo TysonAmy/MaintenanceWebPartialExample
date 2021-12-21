@@ -1,0 +1,39 @@
+﻿@model MaintenanceWebsite.Models.DashboardMainViewModel
+
+@{
+    ViewData["Title"] = "Follow Ups";
+}
+<br />
+<span class="text-danger">@ViewBag.ErrorMessage</span>
+
+<h3 style="text-align: center;">Pending Follow Ups</h3>
+
+<div style="border: 5px solid gray; border-radius: 8px; padding: 5px 5px 5px 5px;">
+    <h4 style="text-align: center;">Downtime Issues</h4>
+
+    @if (Model.downtimeIssues.Count() == 0)
+    {
+        <div>--None--</div>
+    }
+    @foreach (var downtimeIssue in Model.downtimeIssues)
+    {
+        <hr />
+        @Html.Partial("_DowntimeIssueDetails_Dashboard", downtimeIssue)
+    }
+</div>
+<br />
+<div style="border: 5px solid gray; border-radius: 8px; padding: 5px 5px 5px 5px;">
+
+    <h4 style="text-align: center;">Supervisor's Notes</h4>
+    <a asp-action="Create" asp-controller="SupervisorsNotes" class="btn btn-primary">Create New Supervisor's Note</a>
+
+    @if (Model.supervisorsNotes.Count() == 0)
+    {
+        <div>--None--</div>
+    }
+    @foreach (var supervisorsNote in Model.supervisorsNotes)
+    {
+        <hr />
+        @Html.Partial("_SupervisorsNotesDetails_Dashboard", supervisorsNote)
+    }
+</div>

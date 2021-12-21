@@ -1,0 +1,57 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssueViewModel
+
+@{
+    ViewData["Title"] = "Complete";
+}
+
+<h1>Complete</h1>
+
+<h3>Are you sure you want to have no more follow ups?</h3>
+
+<div>
+    <h4>Downtime Issue</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Equipment.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IssueResolution)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IssueResolution)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTime)
+        </dd>
+    </dl>
+
+    <form asp-action="Complete">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="Created" />
+        <input type="hidden" asp-for="EmployeeId" />
+        <input type="hidden" asp-for="EquipmentId" />
+        <input type="hidden" asp-for="IssueResolution" />
+        <input type="hidden" asp-for="DownTime" />
+        <input type="submit" value="Complete" class="btn btn-primary" />
+    </form>
+    <a asp-action="Main" asp-controller="Dashboards" class="btn btn-secondary">Back to Dashboard</a>
+</div>

@@ -1,0 +1,15 @@
+﻿@model MaintenanceWebsite.Models.AreaViewModel
+
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>@Html.DisplayFor(model => model.Name)</h1>
+
+@Html.ActionLink("Edit Area", "Edit", "Area", new { id = Model.Id }, new { @class = "btn btn-primary" })
+@Html.ActionLink("Create Equipment", "Create", "Equipment", new { id = Model.Id }, htmlAttributes: new { @class = "btn btn-primary" })
+<a asp-action="Index" asp-controller="Area" class="btn btn-secondary">Back to Areas</a>
+
+
+@Html.Partial("_EquipmentList_Area_Details", Model.Equipments)

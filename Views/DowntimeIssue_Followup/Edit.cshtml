@@ -1,0 +1,35 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssue_FollowupViewModel
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Downtime Issue Follow up</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <input type="hidden" asp-for="DowntimeIssueId" />
+            <input type="hidden" asp-for="FollowUpRequest" />
+            <input type="hidden" asp-for="FollowingUpReason" />
+            <input type="hidden" asp-for="EmployeeId" />
+            <div class="form-group">
+                <label asp-for="SupervisorComments" class="control-label"></label>
+                <input asp-for="SupervisorComments" class="form-control" />
+                <span asp-validation-for="SupervisorComments" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Main" asp-controller="Dashboards" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+

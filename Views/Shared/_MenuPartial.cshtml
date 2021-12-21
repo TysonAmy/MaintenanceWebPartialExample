@@ -1,0 +1,55 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<AppUser> SignInManager
+@inject UserManager<AppUser> UserManager
+
+<ul class="navbar-nav flex-grow-1">
+    @if (SignInManager.IsSignedIn(User))
+    {
+        <li class="nav-item">
+            <a class="nav-link text-light" href="../Manuals/Macine%20Documentation.htm">Manuals</a>
+        </li>
+        if (User.IsInRole("Admin") || User.IsInRole("Supervisor") || User.IsInRole("Mechanic"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="" asp-controller="DowntimeIssue" asp-action="Search">Downtime Issues</a>
+            </li>
+        }
+
+        if (User.IsInRole("Admin") || User.IsInRole("Supervisor"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="" asp-controller="Dashboards" asp-action="Main">Follow Ups</a>
+            </li>
+        }
+
+        if (User.IsInRole("Admin") || User.IsInRole("MRO") || User.IsInRole("MRO Supervisor"))
+        {
+            <li class="nav-item">
+                <a class="nav-link text-light" asp-area="" asp-controller="RepairPart" asp-action="Search">Repair Parts</a>
+            </li>
+        }
+
+        if (User.IsInRole("Admin") || User.IsInRole("MRO Supervisor"))
+        {
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink"
+                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Admin
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a asp-action="SupervisorsNotesOpenClosed" asp-controller="SupervisorsNotes" class="dropdown-item">Supervisor's Notes</a>
+                    <a asp-action="Index" asp-controller="Role" class="dropdown-item">Roles</a>
+                    <a asp-action="Index" asp-controller="Employee" class="dropdown-item">Employees</a>
+                    <a asp-action="Index" asp-controller="Shift" class="dropdown-item">Shifts</a>
+                    <a asp-action="Index" asp-controller="Area" class="dropdown-item">Areas</a>
+                    <a asp-action="Index" asp-controller="Vendor" class="dropdown-item">Vendors</a>
+                    <a asp-area="Identity" asp-page="/Account/Register" class="dropdown-item">Register</a>
+                </div>
+            </li>
+
+
+
+        }
+
+    }
+</ul>

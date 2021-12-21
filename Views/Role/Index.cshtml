@@ -1,0 +1,33 @@
+﻿@model IEnumerable<RoleViewModel>
+@{
+    ViewData["Title"] = "Roles";
+}
+
+<h1>List of Roles</h1>
+<table class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <td>Name</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var role in Model)
+        {
+        <tr>
+            <td>@role.Name</td>
+            @if (role.Users.Count == 0)
+            {
+                <td>-NO USERS-</td>
+            }
+            else
+            {
+                <td>
+                    @Html.Partial("_AppUser_Role_Index", role.Users)
+                </td>
+
+            }
+        </tr>
+        }
+    </tbody>
+</table>  

@@ -1,0 +1,5 @@
+﻿CREATE TABLE [dbo].[Vendor]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(75) NOT NULL
+)

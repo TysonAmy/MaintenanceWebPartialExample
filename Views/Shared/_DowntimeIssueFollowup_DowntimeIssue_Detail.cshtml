@@ -1,0 +1,44 @@
+﻿@model IEnumerable<MaintenanceWebsite.Models.DowntimeIssue_FollowupViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowUpRequest)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FollowingUpReason)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employee)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupervisorComments)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SupervisorFollowUp)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.FollowUpRequest)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FollowingUpReason)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Employee.FullName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupervisorComments)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SupervisorFollowUp)
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

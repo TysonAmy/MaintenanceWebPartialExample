@@ -1,0 +1,52 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssueViewModel
+
+<div>
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Employee)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Equipment)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Equipment.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IssueResolution)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IssueResolution)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTime)
+        </dd>
+    </dl>
+</div>
+
+@Html.Partial("_DowntimeIssueFollowup_Dashboard", Model.DowntimeIssue_Followups)
+@if (Model.DowntimeIssue_Followups.Max(followup => followup.ListNumber) == 3)
+{
+    <a asp-action="Create" asp-controller="DowntimeIssue_Followup" asp-route-id="@Model.Id" class="btn btn-warning">Passdown</a>
+}
+else if (Model.DowntimeIssue_Followups.Max(followup => followup.ListNumber) > 3)
+{
+    <a asp-action="Create" asp-controller="DowntimeIssue_Followup" asp-route-id="@Model.Id" class="btn btn-danger">Passdown</a>
+}
+else
+{
+    <a asp-action="Create" asp-controller="DowntimeIssue_Followup" asp-route-id="@Model.Id" class="btn btn-primary">Passdown</a>
+}
+
+<a asp-action="Complete" asp-controller="DowntimeIssue" asp-route-id="@Model.Id" class="btn btn-primary">Complete</a>

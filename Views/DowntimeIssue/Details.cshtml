@@ -1,0 +1,50 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssueViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Downtime Issue</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Created)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Created)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EmployeeId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Employee.FullName)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.EquipmentId)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Equipment.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.IssueResolution)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.IssueResolution)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.DownTime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.DownTime)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Search" class="btn btn-secondary">Back to List</a>
+</div>
+
+    @Html.Partial("_DowntimeIssueFollowup_DowntimeIssue_Detail", Model.DowntimeIssue_Followups)
+

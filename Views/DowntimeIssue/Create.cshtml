@@ -1,0 +1,80 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssueViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Downtime Issue</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="AreaId" class="control-label"></label>
+                @Html.DropDownList("AreaId", SelectListModel.getAreaSelectList(), "Select Area", new { @class = "form-control", onchange = "document.forms[1].submit();" })
+                <span asp-validation-for="AreaId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="EquipmentId" class="control-label"></label>
+                @Html.DropDownList("EquipmentId", SelectListModel.getEquipmentSelectList(@Model.AreaId), "Select Equipment", new { @class = "form-control" })
+                <span asp-validation-for="EquipmentId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="IssueResolution" class="control-label"></label>
+                <input asp-for="IssueResolution" class="form-control" />
+                <span asp-validation-for="IssueResolution" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="DownTime" class="control-label"></label>
+                <input asp-for="DownTime" class="form-control" />
+                <span asp-validation-for="DownTime" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HasFollowUp" class="control-label"></label>
+                @Html.CheckBoxFor(m => m.HasFollowUp, new { onchange = "hasFollowUpChanged();" })
+            </div>
+
+            <div class="form-group" id="FollowingUpReasonDiv">
+                <label asp-for="FollowingUpReason" class="control-label"></label>
+                <input asp-for="FollowingUpReason" class="form-control" />
+                <span asp-validation-for="FollowingUpReason" class="text-danger"></span>
+            </div>
+            <div class="form-group" id="FollowingUpSupervisorIdDiv">
+                <label asp-for="FollowUpSupervisorId" class="control-label"></label>
+                @Html.DropDownList("FollowUpSupervisorId", SelectListModel.getEmployeesSelectListByRole("Admin", "Supervisor"), "Select Supervisor", new { @class = "form-control" })
+                <span asp-validation-for="FollowUpSupervisorId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input asp-for="Submit" type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Search" asp-controller="DowntimeIssue" class="btn btn-secondary">Downtime Issues</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script type="text/javascript">
+        function hasFollowUpChanged() {
+            if ($("#HasFollowUp").is(":checked")) {
+                $("#FollowingUpReasonDiv").show();
+                $("#FollowingUpSupervisorIdDiv").show();
+            }
+            else {
+                $("#FollowingUpReasonDiv").hide();
+                $("#FollowingUpSupervisorIdDiv").hide();
+            }
+        }
+
+        hasFollowUpChanged();
+    </script>
+}

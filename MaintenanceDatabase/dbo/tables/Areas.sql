@@ -1,0 +1,7 @@
+﻿CREATE TABLE [dbo].[Areas]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY, 
+    [Name] NVARCHAR(50) NOT NULL, 
+    [Deactivate] DATETIME2 NULL
+)
+

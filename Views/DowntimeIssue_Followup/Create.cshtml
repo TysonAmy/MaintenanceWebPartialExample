@@ -1,0 +1,40 @@
+﻿@model MaintenanceWebsite.Models.DowntimeIssue_FollowupViewModel
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h1>Create</h1>
+
+<h4>Downtime Issue Follow up</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <input type="hidden" asp-for="DowntimeIssueId" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="FollowingUpReason" class="control-label"></label>
+                <input asp-for="FollowingUpReason" class="form-control" />
+                <span asp-validation-for="FollowingUpReason" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="EmployeeId" class="control-label"></label>
+                @Html.DropDownList("EmployeeId", SelectListModel.getEmployeesSelectListByRole("Admin", "Supervisor"), "Select Supervisor", new { @class = "form-control" })
+                <span asp-validation-for="EmployeeId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Main" asp-controller="Dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

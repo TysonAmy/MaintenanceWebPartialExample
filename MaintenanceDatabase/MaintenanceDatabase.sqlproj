@@ -1,0 +1,175 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <Name>MaintenanceDatabase</Name>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectVersion>4.1</ProjectVersion>
+    <ProjectGuid>{93c3a400-401e-4514-85a3-1bb2a9da5b09}</ProjectGuid>
+    <DSP>Microsoft.Data.Tools.Schema.Sql.Sql120DatabaseSchemaProvider</DSP>
+    <OutputType>Database</OutputType>
+    <RootPath>
+    </RootPath>
+    <RootNamespace>MaintenanceDatabase</RootNamespace>
+    <AssemblyName>MaintenanceDatabase</AssemblyName>
+    <ModelCollation>1033, CI</ModelCollation>
+    <DefaultFileStructure>BySchemaAndSchemaType</DefaultFileStructure>
+    <DeployToDatabase>True</DeployToDatabase>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetLanguage>CS</TargetLanguage>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <SqlServerVerification>False</SqlServerVerification>
+    <IncludeCompositeObjects>True</IncludeCompositeObjects>
+    <TargetDatabaseSet>True</TargetDatabaseSet>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <OutputPath>bin\Release\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>False</TreatWarningsAsErrors>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <OutputPath>bin\Debug\</OutputPath>
+    <BuildScriptName>$(MSBuildProjectName).sql</BuildScriptName>
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
+    <!-- Default to the v11.0 targets path if the targets file for the current VS version is not found -->
+    <SSDTExists Condition="Exists('$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets')">True</SSDTExists>
+    <VisualStudioVersion Condition="'$(SSDTExists)' == ''">11.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Condition="'$(SQLDBExtensionsRefPath)' != ''" Project="$(SQLDBExtensionsRefPath)\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <Import Condition="'$(SQLDBExtensionsRefPath)' == ''" Project="$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v$(VisualStudioVersion)\SSDT\Microsoft.Data.Tools.Schema.SqlTasks.targets" />
+  <ItemGroup>
+    <Folder Include="Properties" />
+    <Folder Include="dbo" />
+    <Folder Include="dbo\tables" />
+    <Folder Include="dbo\procedures" />
+    <Folder Include="dbo\procedures\Read" />
+    <Folder Include="dbo\procedures\Insert" />
+    <Folder Include="dbo\procedures\Update" />
+    <Folder Include="dbo\procedures\Delete" />
+    <Folder Include="dbo\procedures\Read\Area" />
+    <Folder Include="dbo\procedures\Read\DowntimeIssue_Followup" />
+    <Folder Include="dbo\procedures\Read\DowntimeIssue" />
+    <Folder Include="dbo\procedures\Read\Employees" />
+    <Folder Include="dbo\procedures\Read\Equipment" />
+    <Folder Include="dbo\procedures\Read\RepairParts" />
+    <Folder Include="dbo\procedures\Read\Shifts" />
+    <Folder Include="dbo\procedures\Read\SupervisorsNote_Followup" />
+    <Folder Include="dbo\procedures\Read\Other" />
+    <Folder Include="dbo\procedures\Read\SupervisorsNote" />
+    <Folder Include="dbo\procedures\Read\AppUser" />
+    <Folder Include="dbo\procedures\Read\Login" />
+    <Folder Include="dbo\procedures\Read\Vendor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Build Include="dbo\tables\Shifts.sql" />
+    <Build Include="dbo\tables\Areas.sql" />
+    <Build Include="dbo\tables\SupervisorsNotes.sql" />
+    <Build Include="dbo\tables\SupervisorsNotes_FollowUps.sql" />
+    <Build Include="dbo\tables\Equipment.sql" />
+    <Build Include="dbo\tables\RepairParts.sql" />
+    <Build Include="dbo\tables\DowntimeIssues.sql" />
+    <Build Include="dbo\tables\DowntimeIssues_Followups.sql" />
+    <Build Include="dbo\procedures\Insert\InsertArea.sql" />
+    <Build Include="dbo\procedures\Insert\InsertDowntimeIssue.sql" />
+    <Build Include="dbo\procedures\Insert\InsertDowntimeIssues_Followup.sql" />
+    <Build Include="dbo\procedures\Insert\InsertEquipment.sql" />
+    <Build Include="dbo\procedures\Insert\InsertRepairPart.sql" />
+    <Build Include="dbo\procedures\Insert\InsertShift.sql" />
+    <Build Include="dbo\procedures\Insert\InsertSupervisorsNote.sql" />
+    <Build Include="dbo\procedures\Update\UpdateArea.sql" />
+    <Build Include="dbo\procedures\Update\UpdateDowntimeIssues_Followup.sql" />
+    <Build Include="dbo\procedures\Update\UpdateEquipment.sql" />
+    <Build Include="dbo\procedures\Update\UpdateRepairPart.sql" />
+    <Build Include="dbo\procedures\Update\UpdateShift.sql" />
+    <Build Include="dbo\procedures\Update\UpdateSupervisorNote.sql" />
+    <Build Include="dbo\procedures\Update\UpdateSupervisorsNote_FollowUp.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteArea.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteDowntimeIssue_Followup.sql" />
+    <Build Include="dbo\procedures\Update\UpdateDowntimeIssues.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteDowntimeIssue.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteRepairParts.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteShift.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteSupervisorsNote.sql" />
+    <Build Include="dbo\procedures\Delete\DeleteSupervisorNotes_FollowUp.sql" />
+    <Build Include="dbo\procedures\Insert\InsertSupervisorsNotes_FollowUp.sql" />
+    <Build Include="dbo\procedures\Read\Area\GetAreas.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue_Followup\GetDowntimeIssue_Followup_LastDowntimeIssueToBeFollowedUp_ByDowntimeIssueId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue_Followup\GetDowntimeIssue_Followup_LastFollowup_ByDowntimeIssueId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue_Followup\GetDowntimeIssue_FollowupByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssueWithDowntimeIssue_FollowupByDowntimeIssue.sql" />
+    <Build Include="dbo\procedures\Read\Equipment\GetEquipmentByAreaId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairParts.sql" />
+    <Build Include="dbo\procedures\Read\Shifts\GetShifts.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote_Followup\GetSupervisorsNote_Followup_LastSupervisorNoteToBeFollowedUp_BySupervisorNoteId.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote_Followup\GetSupervisorsNote_FollowUpsBySupervisorsNoteId.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote_Followup\GetSupervisorsNotes_FollowUpWithSupervisorsNoteAndEmployeeByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\Other\GetCurrentFollowNumberOfActiveFollowupsByEquipmentId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssueWithDowntimeIssue_Followup.sql" />
+    <Build Include="dbo\procedures\Read\Equipment\GetEquipmentByEquipmentId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartByRepairPartId.sql" />
+    <Build Include="dbo\procedures\Read\Shifts\GetShiftByShiftId.sql" />
+    <Build Include="dbo\procedures\Read\Equipment\GetEquipment.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue_Followup\GetDowntimeIssue_Followups_ByDowntimeIssueId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue_Followup\GetDowntimeIssue_Followup_ByDowntimeIssue_FollowUpId.sql" />
+    <Build Include="dbo\procedures\Read\Area\GetAreaByAreaId.sql" />
+    <Build Include="dbo\procedures\Read\Other\GetCurrentFollowNumberOfActiveFollowupsByEmployeesId.sql" />
+    <Build Include="dbo\procedures\Read\Equipment\GetDeactivatedEquipment.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote_Followup\GetSupervisorsNote_FollowupById.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote\getCurrentSupervisorsNotes.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote\getSupervisorsNoteById.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssueWithDowntimeIssue_FollowupByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote_Followup\GetCurrentSupervisorsNote_FollowupBySupervisorNoteId.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUserWithShiftAndSupervisorByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsersWithShiftAndSupervisorBySupervisorId.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsersWithShiftAndSupervisor.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetInActiveAppUsersWithShiftAndSupervisor.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsersByShiftId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssuesBy_StartDate_EndDate_EquipmentId.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssuesBy_StartDate_EndDate.sql" />
+    <Build Include="dbo\procedures\Read\DowntimeIssue\GetDowntimeIssuesByEquipmentId.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsersWithSupervisorsNotesOpenClosed.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote\getOpenSupervisorsNotesByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\SupervisorsNote\getClosedSupervisorsNotesByEmployeeId.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsersByRoleName.sql" />
+    <Build Include="dbo\tables\Logins.sql" />
+    <Build Include="dbo\procedures\Insert\InsertLoginByEmail.sql" />
+    <Build Include="dbo\procedures\Read\Login\GetPreviousLogin.sql" />
+    <Build Include="dbo\tables\Vendor.sql" />
+    <Build Include="dbo\procedures\Insert\InsertVendor.sql" />
+    <Build Include="dbo\procedures\Read\Vendor\GetVendorByVendorId.sql" />
+    <Build Include="dbo\procedures\Read\Vendor\GetVendors.sql" />
+    <Build Include="dbo\procedures\Update\UpdateVendor.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_StartDate_EndDate.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_StartDate_EndDate_RMANum_VendorId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_VendorId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_StartDate_EndDate_RMANum.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_StartDate_EndDate_VendorId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_RMANum.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_RMANum_VendorId.sql" />
+    <Build Include="dbo\procedures\Read\RepairParts\GetRepairPartsBy_PastPromiseDate.sql" />
+    <Build Include="dbo\procedures\Read\AppUser\GetAppUsers.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <RefactorLog Include="MaintenanceDatabase.refactorlog" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="MaintenanceDatabaseLocal.publish.xml" />
+  </ItemGroup>
+</Project>

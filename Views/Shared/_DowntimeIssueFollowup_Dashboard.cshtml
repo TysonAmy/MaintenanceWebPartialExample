@@ -1,0 +1,47 @@
+﻿@model IEnumerable<MaintenanceWebsite.Models.DowntimeIssue_FollowupViewModel>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FollowUpRequest)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FollowingUpReason)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmployeeId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SupervisorComments)
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FollowUpRequest)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FollowingUpReason)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Employee.FullName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupervisorComments)
+                </td>
+                <td>
+                    @if (item.ListNumber == 1)
+                    {
+                        @Html.ActionLink("Leave Comment", "Edit", "DowntimeIssue_Followup", new { Id = item.Id }, new { @class = "btn btn-primary" });
+                    }
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>

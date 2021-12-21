@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Operations Version="1.0" xmlns="http://schemas.microsoft.com/sqlserver/dac/Serialization/2012/02">
+  <Operation Name="Rename Refactor" Key="c19c1584-5062-47fc-a077-896a88c22900" ChangeDateTime="10/25/2021 20:02:14">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[Recieved]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Received" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="b185ee4d-88ef-45df-ace5-758f12c156a9" ChangeDateTime="11/30/2021 16:15:18">
+    <Property Name="ElementName" Value="[dbo].[DowntimeIssues].[Complete]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[DowntimeIssues]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Completed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="87ad31c2-e54c-4874-8ffe-91dbd8df2973" ChangeDateTime="11/30/2021 16:15:29">
+    <Property Name="ElementName" Value="[dbo].[SupervisorsNotes].[Complete]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[SupervisorsNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Completed" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="fcea7bae-1c90-4665-a578-b483c7931fcb" ChangeDateTime="12/15/2021 14:13:18">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[Received]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="PromiseDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="55397d6a-943a-44d1-b0ef-11637cc11038" ChangeDateTime="12/15/2021 14:13:50">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[DueDate]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="CreatedDate" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="7cc15c2b-6c55-430e-a4b6-1f3f972a80a9" ChangeDateTime="12/15/2021 14:14:14">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[DescriptionOfItem]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="Description" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="d0c60b6f-ae62-413a-90af-11e2ce9f6581" ChangeDateTime="12/15/2021 15:01:41">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[Completed]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="DateCompleted" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="8d808ce5-89f8-454a-bf82-e84d5e767713" ChangeDateTime="12/16/2021 14:23:43">
+    <Property Name="ElementName" Value="[dbo].[RepairParts].[Vendor]" />
+    <Property Name="ElementType" Value="SqlSimpleColumn" />
+    <Property Name="ParentElementName" Value="[dbo].[RepairParts]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="VendorId" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="de27d9c2-931c-42af-a68a-064f446d932f" ChangeDateTime="12/20/2021 14:56:24">
+    <Property Name="ElementName" Value="[dbo].[FK_DowntimeIssues_Followups_DowntimeIssues]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[DowntimeIssues_Followups]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_DowntimeIssues_Followups_DowntimeIssueId]" />
+  </Operation>
+  <Operation Name="Rename Refactor" Key="50d59639-744c-40f3-8a5c-1bd3fe495399" ChangeDateTime="12/20/2021 15:16:09">
+    <Property Name="ElementName" Value="[dbo].[FK_SupervisorsNotes_EmployeeId]" />
+    <Property Name="ElementType" Value="SqlForeignKeyConstraint" />
+    <Property Name="ParentElementName" Value="[dbo].[SupervisorsNotes]" />
+    <Property Name="ParentElementType" Value="SqlTable" />
+    <Property Name="NewName" Value="[FK_SupervisorsNotes_AppUser]" />
+  </Operation>
+</Operations>
