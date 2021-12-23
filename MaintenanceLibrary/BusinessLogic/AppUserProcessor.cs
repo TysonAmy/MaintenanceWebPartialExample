@@ -20,9 +20,9 @@ namespace MaintenanceLibrary.BusinessLogic
         /// closed supervisor's notes.
         /// </summary>
         /// <returns>A list of <see cref="AppUserModel"/>s and the number of Open and Close Supervisor's Note.</returns>
-        public static List<AppUserModel> GetEmployeesSupervisorsNoteOpenClosed()
+        public static async Task<IEnumerable<AppUserModel>> GetEmployeesSupervisorsNoteOpenClosedAsync()
         {
-            return getListOfEmployeesWithSupervisorsNoteOpenClosed("Exec GetAppUsersWithSupervisorsNotesOpenClosed");
+            return await getListOfEmployeesWithSupervisorsNoteOpenClosedAsync("Exec GetAppUsersWithSupervisorsNotesOpenClosed");
         }
 
         /// <summary>
@@ -58,11 +58,11 @@ namespace MaintenanceLibrary.BusinessLogic
         /// Queries for all Current Employees
         /// </summary>
         /// <returns>A List of <see cref="AppUserModel"/>s have an active status or active field is null.</returns>
-        public static List<AppUserModel> GetAllCurrentEmployees()
+        public static async Task<IEnumerable<AppUserModel>> GetAllCurrentEmployeesAsync()
         {
             using (IDbConnection cnn = new SqlConnection(DataAccess.SQLDataAccess.GetConnectionString()))
             {
-                return cnn.Query<AppUserModel>("Exec [GetAppUsers]").ToList<AppUserModel>();
+                return await cnn.QueryAsync<AppUserModel>("Exec [GetAppUsers]");
             }
 
         }
@@ -74,11 +74,11 @@ namespace MaintenanceLibrary.BusinessLogic
         /// <param name="RoleName2">A <see cref="string"/> name of the 2nd Role searching</param>
         /// <param name="RoleName3">A <see cref="string"/> name of the 3rd Role searching</param>
         /// <returns></returns>
-        public static List<AppUserModel> GetAllCurrentEmployeesByRoleName(string RoleName1, string RoleName2 = "", string RoleName3 = "")
+        public static async Task<IEnumerable<AppUserModel>> GetAllCurrentEmployeesByRoleNameAsync(string RoleName1, string RoleName2 = "", string RoleName3 = "")
         {
             using (IDbConnection cnn = new SqlConnection(DataAccess.SQLDataAccess.GetConnectionString()))
             {
-                return cnn.Query<AppUserModel>("Exec [GetAppUsersByRoleName] @RoleName1, @RoleName2, @RoleName3", new { RoleName1 = RoleName1, RoleName2 = RoleName2, RoleName3 = RoleName3 }).ToList<AppUserModel>();
+                return await cnn.QueryAsync<AppUserModel>("Exec [GetAppUsersByRoleName] @RoleName1, @RoleName2, @RoleName3", new { RoleName1 = RoleName1, RoleName2 = RoleName2, RoleName3 = RoleName3 });
             }
         }
 
@@ -96,11 +96,11 @@ namespace MaintenanceLibrary.BusinessLogic
         /// </summary>
         /// <param name="shiftId">Id representing a shift</param>
         /// <returns>A list of <see cref="AppUserModel"/>s that have the matching shift id.</returns>
-        public static List<AppUserModel> GetAllCurrentEmployeesByShiftId(int shiftId)
+        public static async Task<IEnumerable<AppUserModel>> GetAllCurrentEmployeesByShiftIdAsync(int shiftId)
         {
             using (IDbConnection cnn = new SqlConnection(DataAccess.SQLDataAccess.GetConnectionString()))
             {
-                return cnn.Query<AppUserModel>("Exec [GetAppUsersByShiftId] @ShiftId", new { ShiftId = shiftId }).ToList<AppUserModel>();
+                return await cnn.QueryAsync<AppUserModel>("Exec [GetAppUsersByShiftId] @ShiftId", new { ShiftId = shiftId });
             }
         }
 
@@ -110,14 +110,14 @@ namespace MaintenanceLibrary.BusinessLogic
          * PRIVATE
          * **********************************/
 
-        private static List<AppUserModel> getListOfEmployeesWithSupervisorsNoteOpenClosed(string SQL, object param = null)
+        private static async Task<IEnumerable<AppUserModel>> getListOfEmployeesWithSupervisorsNoteOpenClosedAsync(string SQL, object param = null)
         {
             using (IDbConnection cnn = new SqlConnection(DataAccess.SQLDataAccess.GetConnectionString()))
             {
-                
-                var a = cnn.Query<AppUserModel>( SQL
+                var a = await cnn.QueryAsync<AppUserModel>(SQL
                 , param: param
-                ).ToList<AppUserModel>();
+                );
+                
                 return a;
             }
 

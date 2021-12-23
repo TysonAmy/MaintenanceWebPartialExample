@@ -133,9 +133,9 @@ namespace MaintenanceWebsite.Controllers
         /// <returns>A <see cref="ActionResult"/> redirect users to Shift Index, if delete not successful then errors are shown</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, ShiftViewModel shiftViewModel)
+        public async Task<ActionResult> DeleteAsync(int id, ShiftViewModel shiftViewModel)
         {
-            var result = MaintenanceLibrary.BusinessLogic.ShiftsProcessor.Delete(shiftViewModel);
+            var result = await MaintenanceLibrary.BusinessLogic.ShiftsProcessor.DeleteAsync(shiftViewModel);
             if(result == "Success")
                 return RedirectToAction(nameof(Index));
             else

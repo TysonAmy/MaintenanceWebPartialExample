@@ -46,7 +46,7 @@
             </div>
             <div class="form-group" id="FollowingUpSupervisorIdDiv">
                 <label asp-for="FollowUpSupervisorId" class="control-label"></label>
-                @Html.DropDownList("FollowUpSupervisorId", SelectListModel.getEmployeesSelectListByRole("Admin", "Supervisor"), "Select Supervisor", new { @class = "form-control" })
+                @Html.DropDownList("FollowUpSupervisorId", await SelectListModel.getEmployeesSelectListByRoleAsync("Admin", "Supervisor"), "Select Supervisor", new { @class = "form-control" })
                 <span asp-validation-for="FollowUpSupervisorId" class="text-danger"></span>
             </div>
             <div class="form-group">

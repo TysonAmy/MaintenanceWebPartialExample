@@ -77,9 +77,11 @@ namespace MaintenanceLibrary.BusinessLogic
         /// </summary>
         /// <param name="shift">A <see cref="ShiftModel"/> representing the shift being deleted</param>
         /// <returns>A <see cref="string"/> saying "Success" if no active employee are in shift, otherwise returns error message <see cref="string"/></returns>
-        public static string Delete(ShiftModel shift)
+        public static async Task<string> DeleteAsync(ShiftModel shift)
         {
-            if (AppUserProcessor.GetAllCurrentEmployeesByShiftId(shift.Id).Count == 0)
+            var a = await AppUserProcessor.GetAllCurrentEmployeesByShiftIdAsync(shift.Id);
+            var b = a.ToList<AppUserModel>();
+            if (b.Count == 0)
             {
                 Delete(shift.Id);
                 return "Success";
